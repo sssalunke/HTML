@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script language=Javascript>
+       function num(a)  
+         {
+	   var i;
+           if(a==1)
+	   {
+	      for(i=1;i<=100;i++)
+	       {
+		if(i%2==0)
+		document.write(i+"<br>");
+	       }
+	   }
+	   else
+	   {
+		for(i=1;i<=100;i++)
+		 {
+		   if((i%2)!=0)
+                   document.write(i+"<br>");
+		 }
+	   }
+         }
+    </script>
+  </head>
+    <body>
+      <table>
+        <tr>
+        <td>
+          <input type="radio" name="r1" onclick="num(1)">Even
+        </td>
+        </tr>
+        <tr>
+        <td>
+          <input type="radio" name="r1" onclick="num(2)">Odd
+        </td>
+        </tr>
+        
+      </table>
+    </body>
+</html>

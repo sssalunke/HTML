@@ -1,0 +1,103 @@
+<html>
+<head>
+<script type="text/javascript">
+function validateForm() 
+{
+    var x = document.forms["f1"]["cname"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+</script>
+</head>
+<body>
+<h1 align="center">Registration Form</h1>
+<center><form name="f1">
+<table>
+<tr>
+<td>Candidate Name
+<input type="text" name="cname"></td>
+</tr>
+<tr>
+<td>Gender
+<input type="radio" name="r1">Male
+<input type="radio" name="r1">Female</td>
+</tr>
+<tr>
+<td>age
+<input type="text" name="age">
+</td>
+</tr>
+<tr>
+<td>select course
+<select>
+<option value="MCA" name="c1">MCA</option>
+<option value="MMS" name="c2">MMS</option>
+<option value="MCA" name="c3">BCA</option>
+<option value="MCA" name="c4">CS</option>
+<option value="MCA" name="c5">IT</option>
+</select></td></tr>
+<tr>
+<td>Address
+<textarea name="a1"></textarea>
+</td></tr>
+<tr>
+<td>Mobile number
+<input type="number" name="m1"></td>
+<td>Landline No
+<input type="number" name="l1"></td>
+</tr>
+<tr>
+<td>Email Id
+<input type="text" name="e1"></td>
+</tr>
+<tr>
+<td>Graduation Stream
+<input type="text" name="g1"></td>
+</tr>
+<tr>
+<td>Percentage
+<input type="number" name="p1"></td>
+<td>CET score
+<input type="number" name="c1"></td>
+</tr>
+<tr>
+<td>Grade
+<input type="text" name="grade"></td>
+</tr>
+<tr>
+<td>University
+<input type="text" name="university"></td>
+</tr>
+<tr>
+<td>Other Qualification
+<input type="text" name="qualification"></td>
+</tr>
+<tr>
+<td>How did ypu get the information about Sterling Institute?</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="news">Newspaper</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="friend">Friend</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="website">Website/Internet</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="other">Any Other(Please specify below)</td>
+</tr>
+<tr>
+<td><input type="text"></td>
+</tr>
+<tr>
+<td>
+<input type="Button" name="Submit" value="submit"></td>
+</tr>
+</table>
+</form>
+</center>
+</body>
+</html>

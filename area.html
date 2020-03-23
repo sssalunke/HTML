@@ -1,0 +1,56 @@
+<html>
+ <head>
+   <script language="Javascript">
+     function area(shp)
+     {
+	if(shp==1)
+	{
+	  var side=prompt("Enter the side for the square");
+          alert("Area of square is : "+(side*side));
+	}
+	else if(shp==2)
+	{
+	  var rad=prompt("Enter the radius :");
+	  alert("Area of circle :"+(3.14*rad*rad));
+	}
+	else if(shp==3)
+	{
+	  var base=prompt("Enter the base :");
+	  var height=prompt("Enter the height");
+	  alert("Area of Triangle :"+(0.5*base*height));
+	}
+	else
+	{
+	  var length=prompt("Enter the length :");
+	  var breadth=prompt("Enter the breadth :");
+	  alert("Area of rectangle:"+(length*breadth));
+	}
+     }
+      </script>
+   </head>
+     <body>
+       <table>
+          <tr>
+	  <td>
+            <input type="radio" name="r1" value="r" onclick="area(1)">Square
+          </td>
+	  </tr>
+          <tr>
+	  <td>
+            <input type="radio" name="r1" value="r" onclick="area(2)">Circle
+          </td>
+	  </tr>
+          <tr>
+	  <td>
+            <input type="radio" name="r1" value="r" onclick="area(3)">Triangle
+          </td>
+	  </tr>
+          <tr>
+	  <td>
+            <input type="radio" name="r1" value="r" onclick="area(4)">Rectangle
+          </td>
+	  </tr>
+          
+       </table>
+     </body>
+</html>

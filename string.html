@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script language=javascript>
+      var x,y;
+      function display()
+        { 
+	  x=document.f1.t1.value;
+          y=" ";
+	  for(i=0;i<x.length;i++)
+           { 
+		y=x.charAt(i);
+	   }
+          document.write(y);
+        }
+    </script>
+  </head>
+  <body>
+   <h1>Working with string</h1>
+     <form name="f1">
+       Enter string <input name="t1"><br>
+         <input type="button" value="OK" onClick="display()">
+     </form>
+  </body>
+</html>
