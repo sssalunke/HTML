@@ -1,14 +1,306 @@
-<html>
-  <head>
-   <script language="Javascript">
-    var i;
-    var n=prompt("Enter the no :");
-    document.write("Table of "+n+"<br>");
-    for(i=1;i<10;i++)
-      {
-	var p=n*i;
-        document.write(n+" * "+i+" = "+p+"<br>");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Table Generator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: 
+        radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 48px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a78bfa 0%, #667eea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .input-field {
+      flex: 1;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn {
+      padding: 16px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .table-section {
+      display: none;
+      animation: slideUp 0.5s ease;
+    }
+
+    .table-section.show {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
       }
-   </script>
-  </head>
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .table-title {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+      border-radius: 16px 16px 0 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: none;
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .math-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+    }
+
+    .math-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .math-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .math-table tr:hover {
+      background: rgba(102, 126, 234, 0.15);
+      transform: scale(1.02);
+    }
+
+    .math-table td {
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .num {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .symbol {
+      color: #a78bfa;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .result {
+      color: #67e8f9;
+      font-weight: 700;
+      font-size: 18px;
+      text-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+    }
+
+    .quick-buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .quick-btn {
+      padding: 12px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quick-btn:hover {
+      background: rgba(102, 126, 234, 0.2);
+      border-color: #667eea;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <div class="header">
+      <span class="icon">🔢</span>
+      <h1>Multiplication Master</h1>
+      <p class="subtitle">Generate multiplication tables instantly</p>
+    </div>
+
+    <div class="input-wrapper">
+      <div class="input-field">
+        <input type="number" id="numberInput" placeholder="Enter number" min="1" max="10000">
+      </div>
+      <button class="btn" onclick="generateTable()">Generate</button>
+    </div>
+
+    <div class="table-section" id="tableSection">
+      <div class="table-title" id="tableTitle">Table of 5</div>
+      <table class="math-table" id="mathTable">
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function generateTable() {
+      const input = document.getElementById('numberInput');
+      const n = parseInt(input.value);
+      
+      if (isNaN(n) || n < 1) {
+        input.style.borderColor = '#ef4444';
+        setTimeout(() => input.style.borderColor = '', 300);
+        return;
+      }
+      
+      renderTable(n);
+    }
+
+    function renderTable(n) {
+      const tableSection = document.getElementById('tableSection');
+      const tableTitle = document.getElementById('tableTitle');
+      const mathTable = document.getElementById('mathTable');
+      
+      mathTable.innerHTML = '';
+      tableTitle.textContent = `Table of ${n}`;
+      
+      for (let i = 1; i <= 10; i++) {
+        const p = n * i;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="num">${n}</td>
+          <td class="symbol">×</td>
+          <td class="num">${i}</td>
+          <td class="symbol">=</td>
+          <td class="result">${p}</td>
+        `;
+        mathTable.appendChild(row);
+      }
+      
+      tableSection.classList.add('show');
+    }
+
+    document.getElementById('numberInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') generateTable();
+    });
+  </script>
+</body>
 </html>
